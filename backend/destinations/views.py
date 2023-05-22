@@ -7,4 +7,4 @@ from .serializers import DestinationSerializer
 from .models import Destinations
 
 
-# Create your views here.
+

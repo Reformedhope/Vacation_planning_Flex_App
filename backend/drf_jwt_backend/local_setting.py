@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-%6t40s58imuvz8r8-(09w64&*b&qtc!06ttvcbq&#m8-*bb&ht
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vacation_database',
+        'NAME': 'vacation_flex_database',
         'HOST': 'localhost',
         'USER': 'root',
         'PASSWORD': 'Password10'
