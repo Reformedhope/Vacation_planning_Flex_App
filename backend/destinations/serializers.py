@@ -6,5 +6,5 @@ class DestinationSerializer(serializers.ModelSerializer):
         model = Destinations
         fields = ['id', 'user' ,'name', 'terrain', 'city', 'state', 'average_summer_temp', 'average_winter_type', 'budget_type_id']
         depth = 1
-        budget_type_id = serializers.IntegerField(write_only=True)
+        # budget_type_id = serializers.IntegerField(write_only=True)
         

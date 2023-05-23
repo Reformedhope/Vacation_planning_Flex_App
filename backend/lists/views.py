@@ -8,6 +8,7 @@ from .models import List
 
 
 # Create your views here.
+# testing purposes
 @api_view(['GET'])
 def get_list(request):
     lists =List.objects.all()

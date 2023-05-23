@@ -21,5 +21,5 @@ urlpatterns = [
     path('api/auth/', include('authentication.urls')),
     path('api/cars/', include('cars.urls')),
     path('api/vacation/lists/', include('lists.urls')),
-    # path('api/destination/', include('destinations.urls')), # why is this out of plyance
+    path('api/destination/', include('destinations.urls')), 
 ]
