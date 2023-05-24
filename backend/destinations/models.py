@@ -5,7 +5,6 @@ from authentication.models import User
 
 
 class Destinations(models.Model):
-    user = models.ForeignKey(User,null= True, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     terrain = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
