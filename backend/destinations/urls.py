@@ -4,16 +4,9 @@ from . import views
 
 urlpatterns =[
     path('destination/', views.get_all_destinations),  # gets all the destinations as well as the budgets attched.
-    path ('beaches/', views.get_all_beach_locations),
-
-
-
-
-
-
-
-
-
+    path ('destinations/<str:searched_location_type>/', views.get_all_beach_locations), # this will get back the results that are specific to a destinatioon terrain.
+    path ('budget/<int:budget_type_id>/', views.get_location_by_budget),
+    # path ('samebudget/', views.get_all_location_by_budget),
 ]
 
 

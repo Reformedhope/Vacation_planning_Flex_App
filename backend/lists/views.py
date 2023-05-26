@@ -24,7 +24,7 @@ def get_list(request):
 #Protected/Actual needed function.
 @api_view(['GET', 'POST',])
 @permission_classes([IsAuthenticated]) # the personmissions class ties into Django's standard django.contrib.auth model permissions. This permission must only be applied to views that have a .queryset property or get_queryset () method. Authorization will only be granted if the user is authenticated and has the relevant model permissions assigned.
-#We are able to use with wihen AllowAnyis in the Params in list ([]).As Well as IsAuthenticated. 
+#We are able to use with wihen AllowAny is in the Params in list ([]).As Well as IsAuthenticated. 
 def get_travelers_items(request): #What goes into the parameters can be used for the function.
     print(
         'User ', f" {request.user.id} {request.user.email} {request.user.username}")
