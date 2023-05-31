@@ -31,12 +31,13 @@ const ListPage = (props) => {
 
   return (
     <div>
+        <h1>Packing List</h1>
         <AddAitem fetchItems = {items}/>   
       <ol>
         {items &&
           items.map((item) => (
             <p key={item.id}>
-              <li>
+              <li input type = "checkbox">
                 {item.items} {item.items_needed}
               </li>
             </p>
