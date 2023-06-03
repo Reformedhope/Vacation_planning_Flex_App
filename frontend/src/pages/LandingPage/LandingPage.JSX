@@ -1,3 +1,6 @@
+
+
+
 const LandingPage = (props) => {
 
 
@@ -5,7 +8,7 @@ const LandingPage = (props) => {
     return ( 
        
        <div> 
-        <input type="text" placeholder="hi"></input>
+        hello world This is the landing page
        </div>
      );
 }

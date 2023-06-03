@@ -34,8 +34,9 @@ const HomePage = () => {
       <Link to  ="GooglePage"> Route Destination!</Link>
       </p>
       <Link to  ="ListPage"> Create a List!</Link>
-      
-
+      <p>
+      <Link to  ="RandomDestinationPage">random Destination</Link>
+      </p>
 
       {cars && cars.map((car) => (
           <p key={car.id}>
@@ -45,5 +46,8 @@ const HomePage = () => {
     </div>
   );
 };
+
+
+
 
 export default HomePage;
