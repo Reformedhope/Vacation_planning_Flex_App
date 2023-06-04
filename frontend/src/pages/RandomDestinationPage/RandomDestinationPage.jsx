@@ -26,10 +26,10 @@ const fetchBudgetDestinations = async (searchInput) => {
     console.log(error.response.data);
   }
 };
-
-useEffect(() => {
-  fetchBudgetDestinations(searchInput);
-}, [searchInput,token]);
+  //! uncomment this once you get the google page to work!!
+// useEffect(() => {
+//   fetchBudgetDestinations(searchInput);
+// }, [searchInput,token]);
 
 function handleSearch(event) {
   event.preventDefault();
@@ -39,7 +39,7 @@ function handleSearch(event) {
 function handleBudgetChange(event) {
   setSearchInput(event.target.value);
 }
-
+  
 return (
   <div>
     <select id="budgetydropdown" value={searchInput} onChange={handleBudgetChange}>
