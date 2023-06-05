@@ -12,7 +12,7 @@ const [user, token] = useAuth();
     
     
     
-const [searchInput, setSearchInput] = useState();
+const [searchInput, setSearchInput] = useState("");
 
 const fetchBudgetDestinations = async () => {
   try {
@@ -21,6 +21,7 @@ const fetchBudgetDestinations = async () => {
         Authorization: "Bearer " + token,
       },
     });
+    console.log(response.data);
     setBudgetDestinations(response.data);
   } catch (error) {
     console.log(error.response.data);
@@ -32,31 +33,36 @@ const fetchBudgetDestinations = async () => {
 // }, [searchInput,token]);
 
 
-function handleBudgetChange(event) {
+const handleFormSubmit = (event) => {
   event.preventDefault();
-  setSearchInput(event.target.value);
-  fetchBudgetDestinations();
+  // setSearchInput(event.target.value);
+  fetchBudgetDestinations(searchInput);
+}
+const handleBudgetChange = (event) => {
+  setSearchInput(event.target.value)
 }
   
 return (
   <div>
 
 
-<form onSubmit={handleBudgetChange}>
-                    <input type='search'
+<form onSubmit={(e) => handleFormSubmit (e)}>
+                    <select id="budgetydropdown" value={searchInput} onChange={handleBudgetChange}>
+      <option value = ''>Select an option</option>
+      <option value="1">Ballin on a budget</option>
+      <option value="2">Fair</option>
+      <option value="3">Treat Yo Self</option>
+      
+    </select>
+    <button type="submit">Search Vacations on a budget!</button>
+                </form>
+{/* <input type='search'
                         placeholder="search a budget" 
                         value={searchInput}
-                        onChange={(event) => setSearchInput(event.target.value)}
+                        onChange={handleBudgetChange}
                     /> 
-                    <button type='submit'>Search Songs</button> 
-                </form>
-
-    {/* <select id="budgetydropdown" value={searchInput} onChange={handleBudgetChange}>
-      <option value="1">Lower class</option>
-      <option value="2">Fair</option>
-      <option value="3">Most Expensive</option>
-    </select>
-    <button type="submit" onClick={handleSearch}>Search Vacations on a budget!</button> */}
+                    <button type='submit'>Search Songs</button>  */}
+    
   </div>
 );   
     

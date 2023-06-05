@@ -14,15 +14,21 @@ from random import choice
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_location_by_budget(request, budget_type_id):
-     #Query single budget based on its id
-    #  budgets = Budget.objects.get(id = budget_type_id)
-     # finds destinations for the budget whose pk was passed in request url (budget_url)
-     destin = Destinations.objects.filter( budget_type__id = budget_type_id)
-     #Turn Queryset 9dirty data into JSON
-    #  budget_serializer = BudgetSerializer(budgets)
-     single_dest = choice(destin)
-     destination_serializer= DestinationSerializer(single_dest)
-     return Response (destination_serializer.data)
+	terrain = request.query_params.get('terrain')
+	#Query single budget based on its id
+	#  budgets = Budget.objects.get(id = budget_type_id)
+	# finds destinations for the budget whose pk was passed in request url (budget_url)
+	destin = Destinations.objects.filter( budget_type__id = budget_type_id)
+	if terrain:
+		destin.filter(terrain=terrain)
+	#Turn Queryset 9dirty data into JSON
+	#  budget_serializer = BudgetSerializer(budgets)
+	if not destin:
+		return Response("No destination mates this criteria")
+
+	single_dest = choice(destin)
+	destination_serializer= DestinationSerializer(single_dest)
+	return Response (destination_serializer.data)
 
 
 

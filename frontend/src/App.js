@@ -32,7 +32,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/GooglePage" element={<PrivateRoute><GooglePage /></PrivateRoute>}/>
-        <Route path="/listpage" element={<PrivateRoute><ListPage /></PrivateRoute>} />
+        <Route path="/googlepage/listpage" element={<PrivateRoute><ListPage /></PrivateRoute>} />
         
       </Routes>
       <Footer />

@@ -97,6 +97,7 @@ const GooglePage = () => {
 
         {/*This is not working? */}
         <Link to="ListPage">Create a List!</Link>
+        (navigate)
       </div>
     </div>
   ) : null;
