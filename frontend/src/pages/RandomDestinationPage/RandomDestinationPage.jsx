@@ -6,17 +6,17 @@ import axios from "axios";
 
 const RandomDestination = (props) => {
 
-const[destination, setDestination] = useState([]);
+// const[destination, setDestination] = useState([]);
 const[budgetDestinations, setBudgetDestinations]= useState([])
 const [user, token] = useAuth();
     
     
     
-const [searchInput, setSearchInput] = useState("");
+const [searchInput, setSearchInput] = useState();
 
-const fetchBudgetDestinations = async (searchInput) => {
+const fetchBudgetDestinations = async () => {
   try {
-    let response = await axios.get(`http://127.0.0.1:8000/api/destination/budget/${searchInput}`, {
+    let response = await axios.get(`http://127.0.0.1:8000/api/destination/budget/${searchInput}/`, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -26,28 +26,37 @@ const fetchBudgetDestinations = async (searchInput) => {
     console.log(error.response.data);
   }
 };
-  //! uncomment this once you get the google page to work!!
+  //! uncomment this once you get the function to work.
 // useEffect(() => {
 //   fetchBudgetDestinations(searchInput);
 // }, [searchInput,token]);
 
-function handleSearch(event) {
-  event.preventDefault();
-  fetchBudgetDestinations(searchInput);
-}
 
 function handleBudgetChange(event) {
+  event.preventDefault();
   setSearchInput(event.target.value);
+  fetchBudgetDestinations();
 }
   
 return (
   <div>
-    <select id="budgetydropdown" value={searchInput} onChange={handleBudgetChange}>
+
+
+<form onSubmit={handleBudgetChange}>
+                    <input type='search'
+                        placeholder="search a budget" 
+                        value={searchInput}
+                        onChange={(event) => setSearchInput(event.target.value)}
+                    /> 
+                    <button type='submit'>Search Songs</button> 
+                </form>
+
+    {/* <select id="budgetydropdown" value={searchInput} onChange={handleBudgetChange}>
       <option value="1">Lower class</option>
       <option value="2">Fair</option>
       <option value="3">Most Expensive</option>
     </select>
-    <button type="submit" onClick={handleSearch}>Search Vacations on a budget!</button>
+    <button type="submit" onClick={handleSearch}>Search Vacations on a budget!</button> */}
   </div>
 );   
     

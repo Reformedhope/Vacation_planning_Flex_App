@@ -63,6 +63,7 @@ const GooglePage = () => {
     destinationRef.current.value = '';
   };
 
+
   return isLoaded ? (
     <div>
       <section className="SearchBoxHolder">
@@ -81,6 +82,7 @@ const GooglePage = () => {
         </div>
       </section>
       <div>
+
         {/* This shows you the actual google map */}
         <GoogleMap
           mapContainerStyle={containerStyle}
