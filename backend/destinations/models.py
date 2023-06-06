@@ -13,6 +13,9 @@ class Destinations(models.Model):
     average_winter_temp = models.DecimalField(max_digits=3, decimal_places=1)
     budget_type = models.ForeignKey(Budget, null=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.name}, {self.terrain}"
+
 
 
 

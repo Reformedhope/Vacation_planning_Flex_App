@@ -33,7 +33,7 @@ const HomePage = () => {
       <p>
       <Link to  ="GooglePage"> Route Destination!</Link>
       </p>
-      <Link to  ="ListPage"> Create a List!</Link>
+      
       <p>
       <Link to  ="RandomDestinationPage">random Destination</Link>
       </p>
