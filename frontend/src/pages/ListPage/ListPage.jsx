@@ -6,7 +6,6 @@ import AddAitem from "../../components/AddAItem/AddAItem";
 const ListPage = (props) => {
   const [user, token] = useAuth();
   const [items, setItems] = useState([]);
-  const [itemsNeeded, setItemsNeeded] = useState(0);
   console.log(user);
   console.log(token);
 
@@ -28,31 +27,36 @@ const ListPage = (props) => {
     };
     fetchItems();
   }, [token]);
+ 
 
   return (
     <div>
-        <h1>Packing List</h1>
-        <AddAitem fetchItems = {items}/>   
-      <ol>
+      <h2>{user.username}</h2>
+              <h1>Packing List</h1>
+      <AddAitem fetchItems={items} />
+      <ol style={{listStyleType: "none"}}>
         {items &&
           items.map((item) => (
-            <p key={item.id}>
-              <li input type = "checkbox">
-                {item.items} {item.items_needed}
-              </li>
-            </p>
+            <li key={item.id}>
+              <input type="checkbox" />
+              {item.items} {item.items_needed}
+            </li>
           ))}
       </ol>
-      <ol>
+      {/* <ol>
       <li>Phone Charger</li>
       <input type="checkbox"/>
     <li> Extra Shoes</li>
               <li>Comfy Slipper or socks</li>
               <li>Pillow</li>
               <li>Loofa or Washcloth</li>
-      </ol>
+      </ol> */}
+
+
     </div>
   );
 };
+
+
 
 export default ListPage;

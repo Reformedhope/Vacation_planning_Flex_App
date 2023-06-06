@@ -41,7 +41,7 @@ const AddAitem = (props) => {
     return (
     
         <div>
-        <h2>{user.username}</h2> 
+         
         <form onSubmit={handleSubmit}>
             <input type='text' value={item} onChange={(event) => setItem(event.target.value)}/>
             <input type='number' value={itemsNeeeded} onChange={(event) => setItemsNeeded(event.target.value)}/>

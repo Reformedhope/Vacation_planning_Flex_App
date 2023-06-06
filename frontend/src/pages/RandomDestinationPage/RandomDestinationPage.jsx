@@ -4,36 +4,38 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const RandomDestination = (props) => {
-  // const[destination, setDestination] = useState([]);
   const [budgetDestinations, setBudgetDestinations] = useState([]);
   const [user, token] = useAuth();
-
   const [searchInput, setSearchInput] = useState("");
   const [destinationInput, setDestinationInput] = useState("");
 
   const fetchBudgetDestinations = async () => {
     try {
+      
       let response = await axios.get(
-        `http://127.0.0.1:8000/api/destination/budget/${searchInput}/`,
+        `http://127.0.0.1:8000/api/destination/budget/${searchInput}/?terrain=${destinationInput}`,
         {
           headers: {
             Authorization: "Bearer " + token,
           },
         }
       );
-      console.log(response.data);
+      debugger
       setBudgetDestinations(response.data);
+      console.log(response.data);
+      
     } catch (error) {
       console.log(error.response.data);
     }
   };
+  // function combineInputs = (e)
 
 
   
   const handleFormSubmit = (event) => {
     event.preventDefault();
     // setSearchInput(event.target.value);
-    fetchBudgetDestinations(searchInput);
+    fetchBudgetDestinations(searchInput,destinationInput);
   };
   const handleBudgetChange = (event) => {
     setSearchInput(event.target.value);
@@ -70,41 +72,13 @@ const RandomDestination = (props) => {
           <option value="Island">Island</option>
           <option value="Beach">Beach</option>
           <option value="Desert">Desert</option>
-          <option value="Moutain">Mountian</option>
+          <option value="Mountain">Mountain</option>
         </select>
         <button type="submit">Search for a Vacation that matches your preference</button>
       </form>
-      {/* <input type='search'
-                        placeholder="search a budget" 
-                        value={searchInput}
-                        onChange={handleBudgetChange}
-                    /> 
-                    <button type='submit'>Search Songs</button>  */}
     </div>
   );
 
-
-
-  //     //   <table>
-  //     //     <thead>
-  //     //         <tr>
-
-  //     //             <th> Destination</th>
-  //     //             <th> Terrain</th>
-  //     //             <th> State</th>
-  //     //             <th> City</th>
-  //     //             <th> Average Summer Tempature</th>
-  //     //             <th> Average Winter Tempature</th>
-  //     //             <th> Budget Type</th>
-  //     //         </tr>
-  //     //     </thead>
-  //     //     <tbody>
-  //     //         {}
-  //     //     </tbody>
-
-  //     //   </table>
-
-  //      );
 };
 
 export default RandomDestination;

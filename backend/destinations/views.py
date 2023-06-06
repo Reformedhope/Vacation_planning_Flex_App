@@ -10,21 +10,20 @@ from budgets.models import Budget
 from budgets.serializers import BudgetSerializer
 from random import choice
 
-# gets a random location with a specific budget.- Works 
+# gets a random location with a specific budget and terrian - Works 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_location_by_budget(request, budget_type_id):
+        #takes in the value of terrain. 
 	terrain = request.query_params.get('terrain')
-	#Query single budget based on its id
-	#  budgets = Budget.objects.get(id = budget_type_id)
-	# finds destinations for the budget whose pk was passed in request url (budget_url)
+	print (terrain)
+        #Filters based on the budget id
 	destin = Destinations.objects.filter( budget_type__id = budget_type_id)
 	if terrain:
-		destin.filter(terrain=terrain)
-	#Turn Queryset 9dirty data into JSON
-	#  budget_serializer = BudgetSerializer(budgets)
+		destin = destin.filter(terrain=terrain) # didnt have a veriable defined to locate what were were trying to filter. 
 	if not destin:
-		return Response("No destination mates this criteria")
+		return Response("No destination matches this criteria")
+		
 
 	single_dest = choice(destin)
 	destination_serializer= DestinationSerializer(single_dest)
