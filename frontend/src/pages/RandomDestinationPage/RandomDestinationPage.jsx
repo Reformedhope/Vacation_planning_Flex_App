@@ -2,6 +2,7 @@ import React from "react";
 import useAuth from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import RandomDestionationForm from "../../components/RandomDestinationForm/RandomDestinationForm";
 
 const RandomDestination = (props) => {
   const [budgetDestinations, setBudgetDestinations] = useState([]);
@@ -76,6 +77,12 @@ const RandomDestination = (props) => {
         </select>
         <button type="submit">Search for a Vacation that matches your preference</button>
       </form>
+    
+      <div> 
+        
+      </div>
+      <RandomDestionationForm destInput={budgetDestinations}/>
+      
     </div>
   );
 

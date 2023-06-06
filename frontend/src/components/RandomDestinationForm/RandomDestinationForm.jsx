@@ -11,16 +11,11 @@ const RandomDestionationForm = (props) => {
           <th> City</th>
           <th> Average Summer Tempature</th>
           <th> Average Winter Tempature</th>
-          <th> Budget Type</th>
+          
         </tr>
       </thead>
-      <tbody>{props.destinationEntered.map((destination) =>{
-       
-            <tr>
-                <td>{destination.name}</td>
-            </tr>
-        
-      })}
+      <tbody>
+        <tr>{props.destInput.name}</tr>
       </tbody>
     </table>
   );
