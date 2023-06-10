@@ -29,14 +29,16 @@ const HomePage = () => {
   }, [token]);
   return (
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
-      <p>
-      <Link to  ="GooglePage"> Route Destination!</Link>
-      </p>
-      
-      <p>
+      <h1>Welcome {user.username}!</h1>
+      <h2>Thank you for signing in. This website is designed to help you select a vacation.<br/>
+       You will need to input a few details so we can find the best vacation for you.</h2>
+       <hr/>
+       <h3> Please click the button below to start the process of finding a random vacation spot.</h3>
+       
+     <p>
       <Link to  ="RandomDestinationPage">random Destination</Link>
       </p>
+     
 
       {cars && cars.map((car) => (
           <p key={car.id}>

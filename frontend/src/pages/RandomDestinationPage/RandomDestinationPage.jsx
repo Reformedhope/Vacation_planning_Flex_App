@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import RandomDestionationForm from "../../components/RandomDestinationForm/RandomDestinationForm";
+import { Link } from "react-router-dom";
 
 const RandomDestination = (props) => {
   const [budgetDestinations, setBudgetDestinations] = useState([]);
@@ -21,7 +22,7 @@ const RandomDestination = (props) => {
           },
         }
       );
-      debugger
+      
       setBudgetDestinations(response.data);
       console.log(response.data);
       
@@ -82,6 +83,7 @@ const RandomDestination = (props) => {
         
       </div>
       <RandomDestionationForm destInput={budgetDestinations}/>
+      <Link to="googlepage">Plan your route!</Link>
       
     </div>
   );

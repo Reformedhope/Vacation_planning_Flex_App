@@ -3,8 +3,8 @@ import {GoogleMap, useJsApiLoader, Marker, Autocomplete, DirectionsRenderer} fro
 import { Link } from "react-router-dom";
 
 const containerStyle = {
-  width: '600px',
-  height: '400px'
+  width: '100%',
+  height: '500px'
 };
 
 const center = {
@@ -21,6 +21,10 @@ const GooglePage = () => {
   const originRef = useRef(null);
   const destinationRef = useRef(null);
 
+  
+
+  
+
 
   // The isLoaded property is provided by the useJsApiLoader hook from the @react-google-maps/api package.
   //  It indicates if the the Google Maps JavaScript API has been loaded and is ready for use in the app.
@@ -32,6 +36,7 @@ const GooglePage = () => {
 
   const onLoad = (map) => {
     setMap(map);
+    initMap(); // i need to call the initmap function to initialize the markers. 
   };
 
   const onUnmount = () => {
@@ -64,7 +69,67 @@ const GooglePage = () => {
   };
 
 
+  let markers = [];
+  function  initMap(){
+    if (map)
+    
+      // This event listener will call addMarker() when the map is clicked.
+    map.addListener("click",(event) => {
+      addMarker(event.latLng);
+    });
+    
+    // adds event listeners for the buttons
+    document
+    .getElementById("show-markers")
+    .addEventListener("click",showMarkers);
+    
+    document
+    .getElementById("hide-markers")
+    .addEventListener("click", hideMarkers);
+    
+    document
+    .getElementById("delete-markers")
+    .addEventListener("click",deleteMarkers);
+  }
+
+  //adds a marker to the map and push to array
+  function addMarker(position){
+    const marker =new window.google.maps.Marker({
+      position,
+      map,
+    });
+    markers.push(marker);
+  }
+
+  //set the map on all markers in the array
+  function setMapOnAll(map){
+    for (let i = 0; i< markers.length; i++){
+    }
+  }
+
+  //Removes the markers from the map
+  function hideMarkers(){
+    setMapOnAll(null);
+  }
+
+  //shows any markers currently  in the array
+  function showMarkers(){
+    setMapOnAll(map);
+  }
+  // Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  hideMarkers();
+  markers = [];
+}
+
+  
+  // window.initMap  = initMap;
+
+
+
+
   return isLoaded ? (
+    
     <div>
       <section className="SearchBoxHolder">
         <div id="floating-pannel">
@@ -91,9 +156,15 @@ const GooglePage = () => {
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
-          <Marker position={center} />
+          <div position={center} />
           {directionsResponse && <DirectionsRenderer directions={directionsResponse} />}
         </GoogleMap>
+        {isLoaded && map && window.initMap && window.initMap()}
+        <div id="floating-panel">
+      <input id="hide-markers" type="button" value="Hide Markers" />
+      <input id="show-markers" type="button" value="Show Markers" />
+      <input id="delete-markers" type="button" value="Delete Markers" />
+    </div>
 
         {/*This is not working? */}
         <Link to="ListPage">Create a List!</Link>
@@ -104,3 +175,5 @@ const GooglePage = () => {
 };
 
 export default GooglePage;
+
+

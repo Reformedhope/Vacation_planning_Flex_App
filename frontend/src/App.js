@@ -17,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import RandomDestination from "./pages/RandomDestinationPage/RandomDestinationPage";
+import HotelList from "./components/TripAdvisor/HotelList";
 
 
 
@@ -31,8 +32,9 @@ function App() {
         <Route path="/randomdestinationpage" element={ <PrivateRoute><RandomDestination /></PrivateRoute>}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/GooglePage" element={<PrivateRoute><GooglePage /></PrivateRoute>}/>
-        <Route path="/googlepage/listpage" element={<PrivateRoute><ListPage /></PrivateRoute>} />
+        <Route path="/RandomDestinationPage/GooglePage" element={<PrivateRoute><GooglePage /></PrivateRoute>}/>
+        <Route path="/RandomDestinationPage/googlepage/ListPage" element={<PrivateRoute><ListPage /></PrivateRoute>} />
+        <Route path="/hotelpage" element={<PrivateRoute><HotelList /></PrivateRoute>} />
         
       </Routes>
       <Footer />
