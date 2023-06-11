@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
+// import useAuth from "../../hooks/useAuth";
 
 const HotelList = () => {
     const[hotels, setHotels]=useState([]);
-    const [user, token] = useAuth();
+    // const [user, token] = useAuth();
     // const[toSearch, setToSearch] =useState([])
     // const[fromSearch, setFromSearch] =useState([]) 
         
         useEffect(() => {
-            fetchHotels();
+            fetchHotels(hotels);
         }, []);
     
         // debugger
@@ -21,24 +21,19 @@ const HotelList = () => {
                 headers: {
                     'X-RapidAPI-Key':  '3209788d98msh7972559b7c7ebe3p199943jsn5a92dd09c0e7',
                     'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com',
-
                 },
               });
                 console.log('value of response.data before setting the state:',response.data);
             setHotels(response.data);
         }catch(error){
             console.log("This is the error",error)
-            console.log("Value of hotels before rendering", hotels);
-            console.log("let check the type of hotel data" , typeof hotels);
-            
+            console.log("Value of hotels before rendering", hotels);        
         }
     }
 
-    console.log("Render function called");
+    
     return ( 
         <div>
-
-
         <h1>Hotel List</h1>
         {/* <input
               type="date"
@@ -52,14 +47,18 @@ const HotelList = () => {
               value={toSearch}
               onChange={(event) => setToDate(event.target.value)}
             /> */}
+        {hotels.map((hotel) =>(
         
-        {hotels.map((hotel) => (
           <div key={hotel.id}>
-            <h2>{hotel.data.title}</h2>
-            <p>{hotel.data.secondaryInfo}</p>
-            <p>{hotel.data.priceForDisplay}</p>
+            <h2>{hotel.title}</h2>
+            <p>{hotel.secondaryInfo}</p>
+            <p>{hotel.priceForDisplay}</p>
+            
+            {/* You cannot map over one object but an array of objects */}
+
           </div>
-        ))}
+        
+))}
       </div>
   
      );

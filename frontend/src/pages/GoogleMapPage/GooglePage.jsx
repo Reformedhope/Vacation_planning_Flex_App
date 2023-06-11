@@ -20,6 +20,7 @@ const GooglePage = () => {
 
   const originRef = useRef(null);
   const destinationRef = useRef(null);
+  
 
   
 
@@ -69,7 +70,8 @@ const GooglePage = () => {
   };
 
 
-  let markers = [];
+  // let markers = [];
+  const markers =useRef([]);
   function  initMap(){
     if (map)
     
@@ -79,8 +81,7 @@ const GooglePage = () => {
     });
     
     // adds event listeners for the buttons
-    document
-    .getElementById("show-markers")
+    document.getElementById("show-markers")
     .addEventListener("click",showMarkers);
     
     document
@@ -96,14 +97,15 @@ const GooglePage = () => {
   function addMarker(position){
     const marker =new window.google.maps.Marker({
       position,
-      map,
+      map:map,
     });
     markers.push(marker);
   }
 
   //set the map on all markers in the array
   function setMapOnAll(map){
-    for (let i = 0; i< markers.length; i++){
+    for (let i = 0; i< markers.current.length; i++){
+      markers.current[i].setMap(map);
     }
   }
 

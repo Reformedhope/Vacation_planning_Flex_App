@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import AddAitem from "../../components/AddAItem/AddAItem";
+import ListGroup from 'react-bootstrap/ListGroup';
+
 
 const ListPage = (props) => {
   const [user, token] = useAuth();
@@ -34,6 +36,7 @@ const ListPage = (props) => {
       <h2>{user.username}</h2>
               <h1>Packing List</h1>
       <AddAitem fetchItems={items} />
+
       <ol style={{listStyleType: "none"}}>
         {items &&
           items.map((item) => (
@@ -43,14 +46,28 @@ const ListPage = (props) => {
             </li>
           ))}
       </ol>
-      {/* <ol>
-      <li>Phone Charger</li>
-      <input type="checkbox"/>
-    <li> Extra Shoes</li>
-              <li>Comfy Slipper or socks</li>
-              <li>Pillow</li>
-              <li>Loofa or Washcloth</li>
-      </ol> */}
+      <div>
+      
+      <ListGroup as="ol">
+        <ol style={{listStyleType:"none"}}>
+          {/* Puting the style type as non takes away the index(number) counter */}
+      <ListGroup.Item as="li" active>
+        <li><input type="checkbox"/>Phone Charger</li>
+        </ListGroup.Item>
+      
+      <li><input type="checkbox"/>Pillow/Pillow</li>
+      <li><input type="checkbox"/>Comfy Slippers/socks/house shoes</li>
+      <li><input type="checkbox"/>Loofa/Washcloth</li>
+      <li><input type="checkbox"/>Battery Block</li>
+      <li><input type="checkbox"/>Snacks for travel</li>
+      <li><input type="checkbox"/>Clorox wipes</li>
+      <li><input type="checkbox"/>Medicine</li>
+      <li><input type="checkbox"/>Head phones</li>
+      <li><input type="checkbox"/>Portible Fan</li>
+      </ol>
+      </ListGroup>
+      </div>
+      
 
 
     </div>
