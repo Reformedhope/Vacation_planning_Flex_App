@@ -4,6 +4,9 @@ import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import './HomePage.css';
+
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -36,7 +39,10 @@ const HomePage = () => {
        <h3> Please click the button below to start the process of finding a random vacation spot.</h3>
        
      <p>
-      <Link to  ="RandomDestinationPage">random Destination</Link>
+      <div className="button">
+      <Link to  ="RandomDestinationPage">Vacation Finder</Link>
+      <p>Hello</p>
+      </div>
       </p>
      
 

@@ -1,6 +1,6 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import RandomDestionationForm from "../../components/RandomDestinationForm/RandomDestinationForm";
 import { Link } from "react-router-dom";
@@ -48,6 +48,7 @@ const RandomDestination = (props) => {
 
   return (
     <div>
+      <h2>{user.username}</h2>
       <div>
         Select your options for a vacation
       </div>
@@ -58,9 +59,9 @@ const RandomDestination = (props) => {
           onChange={handleBudgetChange}
         >
           <option value="">Select an option</option>
-          <option value="1">Ballin on a budget</option>
-          <option value="2">Fair</option>
-          <option value="3">Treat Yo Self</option>
+          <option value="1">Ballin on a budget Package</option>
+          <option value="2">The fair but middling package</option>
+          <option value="3">Treat Yo Self Package</option>
         </select>
       </form>
       

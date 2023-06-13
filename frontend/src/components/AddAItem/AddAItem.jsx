@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect,useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
@@ -43,8 +43,8 @@ const AddAitem = (props) => {
         <div>
          
         <form onSubmit={handleSubmit}>
-            <input type='text' value={item} onChange={(event) => setItem(event.target.value)}/>
-            <input type='number' value={itemsNeeeded} onChange={(event) => setItemsNeeded(event.target.value)}/>
+            <input type='text' value={item} placeholder= " Enter Item Name" onChange={(event) => setItem(event.target.value)}/>
+            <input type='number' value={itemsNeeeded} placeholder= " Enter number of Items" onChange={(event) => setItemsNeeded(event.target.value)}/>
             <button type='submit'>Add Another Item</button>
         </form>
         </div>

@@ -17,8 +17,7 @@ import Footer from "./components/Footer/Footer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import RandomDestination from "./pages/RandomDestinationPage/RandomDestinationPage";
-import HotelList from "./components/TripAdvisor/HotelList";
-
+import HotelList from "./components/TripAdvisorPage/HotelList";
 
 
 function App() {
