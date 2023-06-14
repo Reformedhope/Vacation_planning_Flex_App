@@ -18,7 +18,7 @@ const GooglePage = () => {
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
 
-  const originRef = useRef(null);
+  const originRef = useRef(null);// hook in React is used to create a mutable reference that can persist across re-renders of a functional component.
   const destinationRef = useRef(null);
   
 
