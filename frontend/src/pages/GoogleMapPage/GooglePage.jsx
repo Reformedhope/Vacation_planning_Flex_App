@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import {GoogleMap, useJsApiLoader, Marker, Autocomplete, DirectionsRenderer} from "@react-google-maps/api";
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,6 @@ const GooglePage = () => {
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
-
   const originRef = useRef(null);// hook in React is used to create a mutable reference that can persist across re-renders of a functional component.
   const destinationRef = useRef(null);
   
@@ -69,28 +68,33 @@ const GooglePage = () => {
     destinationRef.current.value = '';
   };
 
-
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  useEffect(() => {
+    if (isLoaded && map && window.initMap) {
+      window.initMap(initMap); // Call the initMap function here
+    }
+  }, [isLoaded, map]);
   // let markers = [];
   const markers =useRef([]);
   function  initMap(){
-    if (map)
-    
+    if (map){
+      map.addListener("click",(event) => { 
+        addMarker(event.latLng);
+      });
       // This event listener will call addMarker() when the map is clicked.
-    map.addListener("click",(event) => {
-      addMarker(event.latLng);
-    });
     
-    // adds event listeners for the buttons
-    document.getElementById("show-markers")
-    .addEventListener("click",showMarkers);
+      // adds event listeners for the buttons
+      document.getElementById("show-markers")
+      .addEventListener("click",showMarkers);
     
-    document
-    .getElementById("hide-markers")
-    .addEventListener("click", hideMarkers);
+      document
+      .getElementById("hide-markers")
+      .addEventListener("click", hideMarkers);
     
-    document
-    .getElementById("delete-markers")
-    .addEventListener("click",deleteMarkers);
+      document
+      .getElementById("delete-markers")
+      .addEventListener("click",deleteMarkers);
+    }
   }
 
   //adds a marker to the map and push to array
@@ -99,7 +103,7 @@ const GooglePage = () => {
       position,
       map:map,
     });
-    markers.push(marker);
+    markers.current.push(marker);
   }
 
   //set the map on all markers in the array
@@ -121,11 +125,12 @@ const GooglePage = () => {
   // Deletes all markers in the array by removing references to them.
 function deleteMarkers() {
   hideMarkers();
-  markers = [];
+  markers.current = [];
 }
 
   
-  // window.initMap  = initMap;
+  initMap  = initMap;
+  
 
 
 
