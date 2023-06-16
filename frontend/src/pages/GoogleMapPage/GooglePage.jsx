@@ -71,9 +71,12 @@ const GooglePage = () => {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   useEffect(() => {
     if (isLoaded && map && window.initMap) {
-      window.initMap(initMap); // Call the initMap function here
+      window.initMap(initMap); 
     }
-  }, [isLoaded, map]);
+  }, [isLoaded, map]);//!including these values as dependencies, the effect will be re-run whenever any of them change. 
+  //!This ensures that the map is fetched again with the updated values whenever the user adds, views,or deleteds markers to the map.
+  //!Without specifying the dependencies, the effect would only run once when the 
+  //!component mounts and would not respond to changes in markers.
   // let markers = [];
   const markers =useRef([]);
   function  initMap(){
@@ -81,7 +84,7 @@ const GooglePage = () => {
       map.addListener("click",(event) => { 
         addMarker(event.latLng);
       });
-      // This event listener will call addMarker() when the map is clicked.
+      // ⬆️This event listener will call addMarker() when the map is clicked.
     
       // adds event listeners for the buttons
       document.getElementById("show-markers")
@@ -131,7 +134,7 @@ function deleteMarkers() {
   
   initMap  = initMap;
   
-
+//TODO: get the markers to stay and also get them to hold information. 
 
 
 
@@ -175,7 +178,7 @@ function deleteMarkers() {
 
         {/*This is not working? */}
         <Link to="ListPage">Create a List!</Link>
-        (navigate)
+        
       </div>
     </div>
   ) : null;

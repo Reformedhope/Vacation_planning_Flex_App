@@ -9,21 +9,23 @@ const HotelList = () => {
     const[toDate, setToDate]=useState('');
     const[fromDate, setFromDate] =useState('');
     const[address, setAddress] = useState("");
-    const[latitude, setLatitude] = useState("");
-    const[longitude, setLongitude] = useState("");
+    // const[lat, setLat] = useState("");
+    // const[lng, setLng] = useState("");
+    const[location, setLocation] =useState({lat:0,lng:0})
     
   
     // const [user, token] = useAuth();
     Geocode.setApiKey("AIzaSyDtdf0GQW4QRWvnh2AMXwXCvBTbGyyG58g");
   // gethotelLocation take in an address as an input which is using the input box down below. // Get latitude & longitude from address
   async function gethotelLocation(address){
+    debugger
     try{
-    let response = await Geocode.fromAddress(address); // This line as the code to wait untill it pull ths cordinated for the address 
+    let response = await Geocode.fromAddress("Chicago, IL"); // This line as the code to wait untill it pull ths cordinated for the address 
     //entered into the input box. using Geocode here instead of using http response to input the information is a quick step to providing back the cordinates. 
     if (response && response.results && response.results.length > 0) {
-      let {latitude, longitude}= response.result[0].geometry.location;
-    setLatitude(latitude);
-    setLongitude(longitude);
+      let {lat, lng}= response.result[0].geometry.location; //
+    setLocation({lat,lng});
+    // setLocation(lng);
     console.log("No results found for the address:", address);
   }
 } catch (error) {
@@ -32,7 +34,7 @@ const HotelList = () => {
 }
 	async function fetchHotels() {
     try {
-      let response = await axios.get(`https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=${latitude}&longitude=${longitude}&checkIn=${fromDate}&checkOut=${toDate}&pageNumber=1&currencyCode=USD`,
+      let response = await axios.get(`https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=${location.lat}&longitude=${location.lng}&checkIn=${fromDate}&checkOut=${toDate}&pageNumber=1&currencyCode=USD`,
         {
 					headers: {
 			      'X-RapidAPI-Key':  '3209788d98msh7972559b7c7ebe3p199943jsn5a92dd09c0e7',
@@ -51,7 +53,7 @@ const HotelList = () => {
 
      useEffect(() => {
        fetchHotels();
-     }, [latitude, longitude, fromDate, toDate]);//!including these values as dependencies, the effect will be re-run whenever any of them change. 
+     }, [location.lat, location.lng, fromDate, toDate]);//!including these values as dependencies, the effect will be re-run whenever any of them change. 
      //!This ensures that the hotels are fetched again with the updated values whenever the user selects a new date or enters a new address.
      //!Without specifying the dependencies, the effect would only run once when the 
      //!component mounts and would not respond to changes in latitude, longitude, fromDate, or toDate.

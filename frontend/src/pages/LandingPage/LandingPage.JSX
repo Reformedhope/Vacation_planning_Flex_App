@@ -1,5 +1,5 @@
-
-
+import VacationCard from "./VacationCards";
+import "./LandingPage.css";
 
 const LandingPage = (props) => {
 
@@ -8,7 +8,10 @@ const LandingPage = (props) => {
     return ( 
        
        <div> 
-        hello world This is the landing page
+        <main>
+          <h1>Travel leaves you spechless, than turns you into a storyteller.</h1>
+          <VacationCard/>
+        </main>
        </div>
      );
 }

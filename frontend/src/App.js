@@ -27,7 +27,8 @@ function App() {
       <Routes>
         {/* <Route path ="/" element ={<LandingPage />}/>   */}
         {/* This page is the page that you will land on when the app is loaded */}
-        <Route path="/" element={ <PrivateRoute><HomePage /></PrivateRoute>}/>
+        <Route path="/" element={<LandingPage />}/>
+        <Route path="homepage" element={ <PrivateRoute><HomePage /></PrivateRoute>}/>
         <Route path="/randomdestinationpage" element={ <PrivateRoute><RandomDestination /></PrivateRoute>}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />

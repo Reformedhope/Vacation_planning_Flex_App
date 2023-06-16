@@ -1,0 +1,17 @@
+.vacation-card{
+    max-width:300px;
+    display: grid;
+    place-content: center;
+    padding: 10px;
+    border: 1px;
+    border-style: double;
+    border-width:5px ;
+    margin: center;
+    align-items: center;
+
+    
+}
+
+
+
+
