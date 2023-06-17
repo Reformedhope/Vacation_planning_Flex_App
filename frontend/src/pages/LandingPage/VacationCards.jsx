@@ -11,9 +11,10 @@ const VacationCard = (props) => {
 
 
     return ( 
+        
         <article className="vacation-card">
-           
             <div> 
+       
                 <img src ={OceanCity} alt ="oceancity" width={270}/>
                 <h3>Ocean City</h3>
                 <p>Maryland</p>
@@ -61,7 +62,7 @@ const VacationCard = (props) => {
                 <p>Garden of the Gods Park is a registered National Natural Landmark featuring dramatic views. Come admire the 300′ sandstone rock formations against the backdrop of snow-capped Pikes Peak and brilliant blue skies.</p>
 
             </div>
-        </article>
+        </article>  
      );
 }
  

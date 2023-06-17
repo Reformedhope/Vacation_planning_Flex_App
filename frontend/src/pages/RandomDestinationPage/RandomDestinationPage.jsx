@@ -59,9 +59,9 @@ const RandomDestination = (props) => {
           onChange={handleBudgetChange}
         >
           <option value="">Select an option</option>
-          <option value="1">Ballin on a budget Package</option>
-          <option value="2">The fair but middling package</option>
-          <option value="3">Treat Yo Self Package</option>
+          <option value="1">$1,500 or less</option>
+          <option value="2">$1500.00 to $3,000.00</option>
+          <option value="3">$3,000 +</option>
         </select>
       </form>
       
@@ -76,8 +76,9 @@ const RandomDestination = (props) => {
           <option value="Beach">Beach</option>
           <option value="Desert">Desert</option>
           <option value="Mountain">Mountain</option>
+          <option value="City">Mountain</option>
         </select>
-        <button type="submit">Search for a Vacation that matches your preference</button>
+        <button type="submit">Search for a Vacation that matches your preferences</button>
       </form>
     
       <div> 

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Geocode from "react-geocode";
-import {Autocomplete} from "@react-google-maps/api";
 
 
 const HotelList = () => {
@@ -9,23 +8,20 @@ const HotelList = () => {
     const[toDate, setToDate]=useState('');
     const[fromDate, setFromDate] =useState('');
     const[address, setAddress] = useState("");
-    // const[lat, setLat] = useState("");
-    // const[lng, setLng] = useState("");
-    const[location, setLocation] =useState({lat:0,lng:0})
+    const[lat, setLat] = useState("");
+    const[lng, setLng] = useState("");
     
-  
     // const [user, token] = useAuth();
     Geocode.setApiKey("AIzaSyDtdf0GQW4QRWvnh2AMXwXCvBTbGyyG58g");
   // gethotelLocation take in an address as an input which is using the input box down below. // Get latitude & longitude from address
   async function gethotelLocation(address){
-    debugger
     try{
-    let response = await Geocode.fromAddress("Chicago, IL"); // This line as the code to wait untill it pull ths cordinated for the address 
+    let response = await Geocode.fromAddress(address); // This line as the code to wait untill it pull ths cordinated for the address 
     //entered into the input box. using Geocode here instead of using http response to input the information is a quick step to providing back the cordinates. 
     if (response && response.results && response.results.length > 0) {
-      let {lat, lng}= response.result[0].geometry.location; //
-    setLocation({lat,lng});
-    // setLocation(lng);
+      let {lat, lng}= response.results[0].geometry.location; //
+    setLat(lat);
+    setLng(lng);
     console.log("No results found for the address:", address);
   }
 } catch (error) {
@@ -34,7 +30,7 @@ const HotelList = () => {
 }
 	async function fetchHotels() {
     try {
-      let response = await axios.get(`https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=${location.lat}&longitude=${location.lng}&checkIn=${fromDate}&checkOut=${toDate}&pageNumber=1&currencyCode=USD`,
+      let response = await axios.get(`https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=${lat}&longitude=${lng}&checkIn=${fromDate}&checkOut=${toDate}&pageNumber=1&currencyCode=USD`,
         {
 					headers: {
 			      'X-RapidAPI-Key':  '3209788d98msh7972559b7c7ebe3p199943jsn5a92dd09c0e7',
@@ -50,10 +46,9 @@ const HotelList = () => {
     console.log("Hotels before rendering", hotels);        
         }
     }
-
      useEffect(() => {
        fetchHotels();
-     }, [location.lat, location.lng, fromDate, toDate]);//!including these values as dependencies, the effect will be re-run whenever any of them change. 
+     }, [lat, lng, fromDate, toDate]);//!including these values as dependencies, the effect will be re-run whenever any of them change. 
      //!This ensures that the hotels are fetched again with the updated values whenever the user selects a new date or enters a new address.
      //!Without specifying the dependencies, the effect would only run once when the 
      //!component mounts and would not respond to changes in latitude, longitude, fromDate, or toDate.
@@ -69,14 +64,6 @@ const HotelList = () => {
     const handleToDateChange = (event) => {
       setToDate(event.target.value);
     };
-    // const handleLatitudeChange = (event) => {
-    //   setLatitude(event.target.value);
-    // }
-    // const handleLongitudeChange = (event) => {
-    //   setLongitude(event.target.value);
-      
-    // }
-
     const handleAddressChange = (event) => {
       setAddress(event.target.value);
     };
@@ -92,7 +79,7 @@ const HotelList = () => {
     <form onSubmit={(e) => handleFormSubmit(e)}>
     <input type="date" value ={fromDate} placeholder="Select a date" onChange={handleFromDateChange}/>
     <input type="date" value ={toDate} placeholder="Select a date" onChange={handleToDateChange}/>
-    
+    <p>Type in the city comma the state</p>
       <input type="text" value ={address} placeholder ="Enter City" onChange={handleAddressChange}/>
     
       <button type="submit">Search Hotels</button>
