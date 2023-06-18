@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Geocode from "react-geocode";
 
 
+
 const HotelList = () => {
     const[hotels, setHotels]=useState([]);
     const[toDate, setToDate]=useState('');
@@ -73,8 +74,8 @@ const HotelList = () => {
 
 
     return ( <div>
-    <div>
-    </div>
+      
+    
 
     <form onSubmit={(e) => handleFormSubmit(e)}>
     <input type="date" value ={fromDate} placeholder="Select a date" onChange={handleFromDateChange}/>
@@ -95,6 +96,7 @@ const HotelList = () => {
       {hotels.length > 0 ? (
         hotels.map((hotel) => (
           <div key={hotel.id}>
+            <h1>{hotel.cardPhotos}</h1>
             <h2>{hotel.title}</h2>
                 {hotel.provider}<br/>
             City: {hotel.secondaryInfo}

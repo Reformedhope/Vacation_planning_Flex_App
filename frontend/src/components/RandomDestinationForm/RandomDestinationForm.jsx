@@ -1,8 +1,9 @@
-
+import Table from 'react-bootstrap/Table';
 
 const RandomDestionationForm = (props) => {
   return (
-    <table>
+    <div className='form-border1'>
+    <Table striped bordered hover variant="dark" size="sm">
       <thead>
         <tr>
           <th> Destination</th>
@@ -25,7 +26,8 @@ const RandomDestionationForm = (props) => {
         </tr>
 
       </tbody>
-    </table>
+    </Table>
+    </div>
   );
 };
 

@@ -10,16 +10,23 @@ li {
 
 .navBar {
   background: rgb(44, 44, 44);
+  background-image: url(../../assets/roadtrip.jpg);
+  background-blend-mode:soft-light;
+  background-size: cover;
+  background-position:center;
+  height:10rem;
   box-shadow: 4px 2px 5px gray;
   color: white;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
+ 
 }
 
 .navBar button {
-  background: transparent;
+  background: solid;
   border: 2px solid white;
-  color: white;
+  color: rgb(5, 5, 5);
+  border-color: black;
   padding: 0.4rem 0.5rem;
 }
 
@@ -31,5 +38,22 @@ li {
 
 .brand {
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 3rem;
+  margin: auto;
+}
+
+.navbar-nav {
+  float:none;
+  margin:0 auto;
+  display: block;
+  text-align: center;
+}
+
+.navbar-nav > li {
+  display: inline-block;
+  float:none;
+}
+
+.nav-link {
+  color: white !important;
 }

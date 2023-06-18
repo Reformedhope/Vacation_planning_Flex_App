@@ -1,8 +1,6 @@
 import VacationCard from "./VacationCards";
 import "./LandingPage.css";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
 
 const LandingPage = (props) => {
 
@@ -10,9 +8,9 @@ const LandingPage = (props) => {
 
     return ( 
        
-       <div> 
+       <div > 
         <main>
-          <h1>Travel leaves you spechless, than turns you into a storyteller.</h1>
+          <h1 className=" head">Travel leaves you spechless, than turns you into a storyteller.</h1>
           <VacationCard/>
         </main>
        </div>

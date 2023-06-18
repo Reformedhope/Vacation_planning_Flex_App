@@ -1,3 +1,25 @@
 .error {
   color: red;
 }
+
+.background{
+  padding: 2rem;
+  background: rgb(44, 44, 44);
+  background-image: url(../../assets/Planning.jpg);
+  
+  background-blend-mode:soft-light;
+  background-size:cover;
+  background-position:center;
+  color: aliceblue;
+  padding: 10rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+}
+.link {
+  border-radius: 30px;
+  border-bottom: 2px;
+  box-shadow: 4px 2px 7px rgb(0, 0, 0);
+  padding: 1px;
+  background-color: rgb(249, 252, 252);
+}
+

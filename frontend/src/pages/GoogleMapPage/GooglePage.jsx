@@ -267,8 +267,7 @@ let handleOptionChange = (event) => {
   setLocationSelectedOption(event.target.value);
   showMarker(event.target.value);
 };
-  
-//TODO: get the markers to stay and also get them to hold information. 
+   
 
 
 
@@ -312,14 +311,7 @@ let handleOptionChange = (event) => {
           {directionsResponse && <DirectionsRenderer directions={directionsResponse} />}
         </GoogleMap>
         {isLoaded && map && window.initMap && window.initMap()}
-        <div id="floating-panel">
-      <input id="hide-markers" type="button" value="Hide Markers" />
-      <input id="show-markers" type="button" value="Show Markers" />
-      <input id="delete-markers" type="button" value="Delete Markers" />
-    </div>
-
-        {/*This is not working? */}
-        <Link to="ListPage">Create a List!</Link>
+    
         
       </div>
     </div>
@@ -327,6 +319,5 @@ let handleOptionChange = (event) => {
 };
 
 export default GooglePage;
-//TODO Create a drop down that hold the information from my random destination create and allow it to display the marker. 
 
 
