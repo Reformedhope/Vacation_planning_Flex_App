@@ -43,7 +43,7 @@ const VacationCard = (props) => {
             <Col>
             <div className="vacation-card">
             <img src ={WestPalm} alt ="WestPalm Beach" width={270}/>
-                <h3>WestPalm Beach </h3>
+                <h3>West Palm Beach </h3>
                 <p>Florida</p>
                 <hr/>
                 <p>West Palm Beach is best known for its palm-lined trees, nightlife, entertainment, cultural attractions, shopping areas, and fantastic fishing spots.</p>

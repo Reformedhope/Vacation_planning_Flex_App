@@ -274,31 +274,45 @@ let handleOptionChange = (event) => {
   return isLoaded ? (
     
     <div>
+      <div class="container">
+  <div class="row">
+    <div class="col">
       <div>
-      <select value={locationSelectedOption} onChange={handleOptionChange}>
+        <h3> Select your location from the drop down and see if the vacation destination is somewhere you want to explore. If not return to the Random Destination generator.</h3>
+      <select class="form-select" aria-label="Default select example" value={locationSelectedOption} onChange={handleOptionChange}>
   <option value="">Select your location</option>
   {options.map((option) => (
     <option value={option.value}>{option.label}</option>
   ))}
 </select>
       </div>
+    </div>
+    <div class="col">
+      <div>
       <section className="SearchBoxHolder">
         <div id="floating-pannel">
+          <h3>Enter your address and the location you are traveling to.<br/> The distance and duration are shown below.</h3>
+          <br/>
           <Autocomplete>
-            <input type='text' placeholder="Starting Point" ref={originRef} />
+            <input  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" type='text' placeholder="Starting Point" ref={originRef} />
           </Autocomplete>
           <Autocomplete>
-            <input type='text' placeholder="Destination" ref={destinationRef} />
+            <input class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" type='text' placeholder="Destination" ref={destinationRef} />
           </Autocomplete>
           <button className="" type='submit' onClick={calculateRoute}> Take a look at your route!</button>
           <button className="" type='submit' onClick={clearRoute}>Clear Route</button>
           {/* This renders only if there is a value in the input boxes, it will not show otherwise. */}
-          {distance && <p>Distance: {distance}</p>}
-          {duration && <p> Duration: {duration}</p>}
+          
         </div>
       </section>
       <div>
-
+      </div>
+    </div>
+  </div>
+</div>
+      
+          {distance && <p>Distance: {distance}</p>}
+          {duration && <p> Duration: {duration}</p>}
         {/* This shows you the actual google map */}
         <GoogleMap
           mapContainerStyle={containerStyle}
@@ -315,6 +329,8 @@ let handleOptionChange = (event) => {
         
       </div>
     </div>
+    
+  
   ) : null;
 };
 

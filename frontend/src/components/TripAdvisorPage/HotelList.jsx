@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Geocode from "react-geocode";
+import "./HotelList.css";
+import hotel1 from "../../assets/hotl.jpg";
+import hotel2 from "../../assets/Hotel3.jpg";
+import hotel3 from "../../assets/hotel.jpg"
 
 
 
@@ -34,7 +38,7 @@ const HotelList = () => {
       let response = await axios.get(`https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=${lat}&longitude=${lng}&checkIn=${fromDate}&checkOut=${toDate}&pageNumber=1&currencyCode=USD`,
         {
 					headers: {
-			      'X-RapidAPI-Key':  '3209788d98msh7972559b7c7ebe3p199943jsn5a92dd09c0e7',
+			      'X-RapidAPI-Key':  'ebca4246cbmshfdb935bd9e33d2bp16cdacjsn55f3c899903a',
 						'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com',
 					},
         }
@@ -73,21 +77,38 @@ const HotelList = () => {
 
 
 
-    return ( <div>
+    return ( <div className="hotelpage">
+      <main>
       
     
-
-    <form onSubmit={(e) => handleFormSubmit(e)}>
+    <div>
+    <div class="container py-3">
+  <div class="row">
+    <div class="col ">
+      <div className="hotelpics">
+      <img src={hotel1} alt="Hotel"/>
+      </div>
+    </div>
+    <div class="col">
+      <form onSubmit={(e) => handleFormSubmit(e)}>
+      
+      <div className="inputdates">
+      <h2>Check in date</h2>
     <input type="date" value ={fromDate} placeholder="Select a date" onChange={handleFromDateChange}/>
+   
+    <h2>Check out date</h2>
     <input type="date" value ={toDate} placeholder="Select a date" onChange={handleToDateChange}/>
-    <p>Type in the city comma the state</p>
+    <br/>
+    <br/>
+    <h3>Location of hotel</h3>
+    <p>Enter city and state<br/>Example: Atlanta, GA </p>
+    <p></p>
       <input type="text" value ={address} placeholder ="Enter City" onChange={handleAddressChange}/>
-    
-      <button type="submit">Search Hotels</button>
+      <button type="submit" class="btn btn-secondary">Search Hotels</button>
+      </div>
     </form>
-
-
-			
+    </div>
+    <div class="row">
       <div>
       <h1>Hotel List</h1>
       {/* Conditional rendering check {hotels.length > 0 ? ( hotels.map((hotel)}. 
@@ -96,11 +117,11 @@ const HotelList = () => {
       {hotels.length > 0 ? (
         hotels.map((hotel) => (
           <div key={hotel.id}>
-            <h1>{hotel.cardPhotos}</h1>
-            <h2>{hotel.title}</h2>
-                {hotel.provider}<br/>
+            {/* <h1>{hotel.cardPhotos}</h1> */}
+            <h2>Name:{hotel.title}</h2>
+              Website: {hotel.provider}<br/>
             City: {hotel.secondaryInfo}
-            <p>{hotel.priceForDisplay}</p>
+            <p>Price:{hotel.priceForDisplay}</p>
             
 
           </div>
@@ -110,10 +131,22 @@ const HotelList = () => {
       )}
     </div>
     </div>
+    
+  </div>
+</div>
+    
+    
+    </div>
+
+
+			
+      
+    </main>
+    </div>
   );
 }
 
-//TODO: I need to go back and make the geocode API work by itself before I incorp it intoo my hotels API
+
  
 export default HotelList; 
 

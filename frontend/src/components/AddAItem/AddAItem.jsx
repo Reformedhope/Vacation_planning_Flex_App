@@ -40,13 +40,25 @@ const AddAitem = (props) => {
     
     return (
     
+        
         <div>
-         
-        <form onSubmit={handleSubmit}>
+            <div class="container">
+  <div class="row">
+    <div class="col">
+        <hr/>
+      <form onSubmit={handleSubmit}>
             <input type='text' value={item} placeholder= " Enter Item Name" onChange={(event) => setItem(event.target.value)}/>
-            <input type='number' value={itemsNeeeded} placeholder= " Enter number of Items" onChange={(event) => setItemsNeeded(event.target.value)}/>
-            <button type='submit'>Add Another Item</button>
+            <br/>
+            <br/>
+            <input type='number' value={itemsNeeeded} placeholder= " Enter number of Items" onChange={(event) => setItemsNeeded(event.target.value)}/><br/>
+            <br/>
+            <button type='submit'>Add Item!</button>
+            
         </form>
+    </div>
+  </div>
+</div>
+        
         </div>
            
 

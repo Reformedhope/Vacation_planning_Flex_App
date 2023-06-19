@@ -32,14 +32,17 @@ const Navbar = () => {
       <Nav.Item>
         <Nav.Link  href="/RandomDestinationPage">Next Vacation Destination</Nav.Link>
       </Nav.Item>
+      
       <Nav.Item>
         <Nav.Link href="/RandomDestinationPage/googlepage">Maps and location</Nav.Link>
       </Nav.Item>
+     
       <Nav.Item>
-      <Nav.Link href="/RandomDestinationPage/googlepage/ListPage">Lists</Nav.Link>
+     <Nav.Link href="/hotelpage">Find a hotel</Nav.Link>
       </Nav.Item>
+    
       <Nav.Item>
-      <Nav.Link href="/hotelpage">Find a hotel</Nav.Link>
+       <Nav.Link href="/RandomDestinationPage/googlepage/ListPage">Lists</Nav.Link>
       </Nav.Item>
     </Nav>
     </div>

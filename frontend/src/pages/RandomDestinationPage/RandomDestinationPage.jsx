@@ -3,7 +3,10 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import axios from "axios";
 import RandomDestionationForm from "../../components/RandomDestinationForm/RandomDestinationForm";
-import { Link } from "react-router-dom";
+import "./RandomDestination.css";
+import chesapeak from "../../assets/chestertownMD.jpg"
+import cove from "../../assets/cove.jpg"
+import travel from "../../assets/travel.jfif"
 
 const RandomDestination = (props) => {
   const [budgetDestinations, setBudgetDestinations] = useState([]);
@@ -47,13 +50,27 @@ const RandomDestination = (props) => {
   };
 
   return (
-    <div>
-      <h2>{user.username}</h2>
+    <div className="destpage">
+      <div class="px-2 py-2">
+      <div class="container">
+  <div class="row">
+    <div class="col">
+      <div className="picture">
+      <img src={chesapeak} height={700} width={400} alt="Chesepeakbay"/>
+      </div>
+    </div>
+    <div class="col-4">
+      <div className="wordsborder">
+      <h1><b>{user.username} </b></h1>
+      <h2>Use the drop downs to have a destination selected for you.</h2>
+      <hr/>
+      <h3>If you do not like the vacation destination selected based on your buddget and terrain selected, <br/> <b> click the button to re-roll</b></h3>
       <div>
+      </div>
         Select your options for a vacation
       </div>
       <form onSubmit={(e) => handleFormSubmit(e)}>
-        <select
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
           id="budgetydropdown"
           value={searchInput}
           onChange={handleBudgetChange}
@@ -64,9 +81,9 @@ const RandomDestination = (props) => {
           <option value="3">$3,000 +</option>
         </select>
       </form>
-      
+      <br/>
       <form onSubmit={(e) => handleFormSubmit(e)}>
-        <select
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
           id="destinationdropdown"
           value={destinationInput}
           onChange={handleDestinationChange}
@@ -78,14 +95,26 @@ const RandomDestination = (props) => {
           <option value="Mountain">Mountain</option>
           <option value="City">Mountain</option>
         </select>
+        <br/>
         <button type="submit">Search for a Vacation that matches your preferences</button>
       </form>
-    
-      <div> 
-        
+    </div>
+    <div class="col">
+    <div className="picture">
+      <img src={cove} height={700} width={400} alt=" RANDOM caynon"/>
       </div>
-      <RandomDestionationForm destInput={budgetDestinations}/>
-      <Link to="googlepage">Plan your route!</Link>
+    </div>
+  </div>
+  <div class="row">
+    <RandomDestionationForm destInput={budgetDestinations}/>
+  </div>
+  <div class="row">
+  <h1>"<b> TAKE ONLY MEMORIES, LEAVE ONLY FOOTPRINTS." - CHIEF SEATTLE</b></h1>
+  </div>
+</div>
+</div>
+      
+    
       
     </div>
   );

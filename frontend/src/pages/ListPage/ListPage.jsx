@@ -3,11 +3,9 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import AddAitem from "../../components/AddAItem/AddAItem";
 import ListGroup from "react-bootstrap/ListGroup";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import './ListPage.css';
-// import packing from '../assets/packingphoto.jpg'
+import packingphoto from "../../assets/Packingphoto.jpg"
+import seasonpic from "../../assets/seasons.jpg"
 
 
 
@@ -41,42 +39,18 @@ const ListPage = (props) => {
 
   return (
     
+    
         
-    <div>
-      <Container>
-      <Row>
-      <Col>
+    <div className="listbackground">
+      <div class="container">
+  <div class="row">
+    <div class="col">
       <div>
-        <h2>{user.username}</h2>
-        <h1>Packing List</h1>
-        <AddAitem fetchItems={items} />
-
-        <ol style={{ listStyleType: "none" }}>
-          {items &&
-            items.map((item) => (
-              <li key={item.id}>
-                <input type="checkbox" />
-                {item.items} {item.items_needed}
-              </li>
-            ))}
-        </ol>
-      </div>
-      </Col>
-      
-
-      <div>
-         
-        <Col>
-            <div>
-            hello
-      
-      </div>
         <ListGroup horizontal>
-      
-        
           <ol style={{ listStyleType: "none" }}>
             <h2>Common items to check off</h2>
             <p>No Item left behind</p>
+            <hr/>
             {/* Puting the style type as non takes away the index(number) counter */}
             <ListGroup.Item>
               <li>
@@ -140,13 +114,48 @@ const ListPage = (props) => {
             </ListGroup.Item>
           </ol>
         </ListGroup>
-        </Col>
-        
+        </div>
+    </div>
+    <div class="col">
+      <h2>{user.username}'s</h2>
+        <h1>Packing Lists</h1>
+        <hr/>
+    <img src={packingphoto} class="rounded" alt="packing items"/>
+    </div>
+    <div class="col">
+      <div>
+        <h2> Create your own list!</h2>
+        <AddAitem fetchItems={items} />
+        <ol style={{ listStyleType: "none" }}>
+          {items &&
+            items.map((item) => (
+              <li key={item.id}>
+                <input type="checkbox" />
+                {item.items} {item.items_needed}
+              </li>
+            ))}
+        </ol>
       </div>
+    </div>
+  </div>
+  <div class="row">
+   <p> "When Preparing to travel lay out all your cloths and all your money.<br/>
+    Than take half the clothes and twice the money." - Susan Helier</p>
+    <img src={seasonpic} alt="seasons" height={400} width={9}/>
+ 
+
+  </div>
+</div>
+
       
      
-       </Row>
-    </Container>
+      
+
+         
+      
+      
+     
+       
 
 
     </div>

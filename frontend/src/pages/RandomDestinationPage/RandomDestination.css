@@ -1,0 +1,27 @@
+.wordsborder{
+    border: 5rem;
+    border-radius: 3px;
+    border-color: aqua;
+    padding: 4px;
+    border-bottom: 2px;
+    border-width: 10%;
+
+}
+
+.picture{
+    box-shadow: 4px 2px 5px gray;
+    color: white;
+}
+
+.destpage{
+    font-family: 'Times New Roman', Times, serif;
+    opacity: 0.9;  
+    color: black;
+    padding: 1rem;
+    background-color: rgb(243, 236, 226);
+}
+
+
+   
+     
+

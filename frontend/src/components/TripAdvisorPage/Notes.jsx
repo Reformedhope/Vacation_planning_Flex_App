@@ -34,3 +34,4 @@
     //!         City: {hotel.secondaryInfo}
     //!         <p>{hotel.priceForDisplay}</p>
     //!       </div>
+    
