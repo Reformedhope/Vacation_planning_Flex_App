@@ -6,7 +6,7 @@ import RandomDestionationForm from "../../components/RandomDestinationForm/Rando
 import "./RandomDestination.css";
 import chesapeak from "../../assets/chestertownMD.jpg"
 import cove from "../../assets/cove.jpg"
-import travel from "../../assets/travel.jfif"
+
 
 const RandomDestination = (props) => {
   const [budgetDestinations, setBudgetDestinations] = useState([]);

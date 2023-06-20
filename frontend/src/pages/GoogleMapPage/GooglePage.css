@@ -1,0 +1,15 @@
+.background {
+    background-image: url(../../assets/mapp.jpg);
+    padding: 2rem;
+    margin: auto;
+    margin-left: 2px;
+    color: aliceblue;
+}
+
+  
+.googlebutton {
+    float: left;
+    margin-left: 15px;
+    padding: 2rem;
+  }
+ 
