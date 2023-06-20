@@ -10,7 +10,7 @@ const LandingPage = (props) => {
        
        <div > 
         <main>
-          <h1 className=" head">Travel leaves you spechless, than turns you into a storyteller.</h1>
+          <h1 className=" head">Travel leaves you speechless, then turns you into a storyteller.</h1>
           <VacationCard/>
         </main>
        </div>

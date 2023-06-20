@@ -284,7 +284,7 @@ let handleOptionChange = (event) => {
   <div class="row">
     <div class="col">
       <div>
-        <h3> Select your location from the drop down and see if the vacation destination is somewhere you want to explore. If not return to the Random Destination generator.</h3>
+        <h3> Select your location from the drop down and see if the vacation destination is somewhere you want to explore. If not, return to the Random Destination Generator.</h3>
       <select class="form-select" aria-label="Default select example" value={locationSelectedOption} onChange={handleOptionChange}>
   <option value="">Select your location</option>
   {options.map((option) => (

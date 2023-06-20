@@ -64,7 +64,7 @@ const RandomDestination = (props) => {
       <h1><b>{user.username} </b></h1>
       <h2>Use the drop downs to have a destination selected for you.</h2>
       <hr/>
-      <h3>If you do not like the vacation destination selected based on your buddget and terrain selected, <br/> <b> click the button to re-roll</b></h3>
+      <h3>If you do not like the vacation destination provided. <br/> <b> click the button to re-roll</b></h3>
       <div>
       </div>
         Select your options for a vacation
@@ -75,7 +75,7 @@ const RandomDestination = (props) => {
           value={searchInput}
           onChange={handleBudgetChange}
         >
-          <option value="">Select an option</option>
+          <option value="">Select a budget</option>
           <option value="1">$1,500 or less</option>
           <option value="2">$1500.00 to $3,000.00</option>
           <option value="3">$3,000 +</option>
@@ -88,7 +88,7 @@ const RandomDestination = (props) => {
           value={destinationInput}
           onChange={handleDestinationChange}
         >
-          <option value="">Select an option</option>
+          <option value="">Select an terrain</option>
           <option value="Island">Island</option>
           <option value="Beach">Beach</option>
           <option value="Desert">Desert</option>
@@ -96,7 +96,7 @@ const RandomDestination = (props) => {
           <option value="City">Mountain</option>
         </select>
         <br/>
-        <button type="submit">Search for a Vacation that matches your preferences</button>
+        <button type="submit">Search for a vacation</button>
       </form>
     </div>
     <div class="col">
