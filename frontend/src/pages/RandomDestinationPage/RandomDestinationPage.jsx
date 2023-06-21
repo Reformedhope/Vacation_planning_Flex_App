@@ -93,7 +93,7 @@ const RandomDestination = (props) => {
           <option value="Beach">Beach</option>
           <option value="Desert">Desert</option>
           <option value="Mountain">Mountain</option>
-          <option value="City">Mountain</option>
+          <option value="City">City</option>
         </select>
         <br/>
         <button type="submit">Search for a vacation</button>
