@@ -1,18 +1,20 @@
-# ReactDjango_JWT_StarterCode
+VACATION FLEX APP
 
-Starter code for full stack React + Django applications using JWT for authentication/authorization and a fully working register/login system on the React side
 
 ## NOTE
 
-"cars" app in Django backend for example purposes only. Study it closely and review provided resources to understand how to properly create protected endpoints that require a JWT token for authorization.
+A travel planning application that allows you to have a random destination selected for you and the ability to plan
+out the route, items, and check hotels in the area.
+● Technologies used: JavaScript, React.js, HTML, CSS,Python, Django REST Framework, MYSQL.
+JSON Web Token, Google GeoCode API, Google Maps API, TripAdvisor API, Google Marker Library,
+Google Directions Library, Google Places Library, Bootstrap, Sass
+● Application features include:
+○ User account registration, login, and out(authentication & JWT)
+○ User profile creation, including input personal interest and budget information, that will be used
+to generate a random vacation destination.
+○ User input information to generate a list of items not to forget when taking a trip.
+○ A visual of the selected location
+○ The ability to map out your trip for duration and distance.
+○ The ability to view hotels in the area based on check-in and out dates of the location.
 
-## For implementing user roles
 
-- see comments in the following files in the order they are listed
-  - backend/authentication/models.py
-  - backend/authentication/serializers.py (note that there are several places needing modification in that file)
-- If modifying the User class in authentication/models.py, make sure to drop your existing database,
-  create it, and run migrations from scratch
-- for a great reference, see the following article: https://simpleisbetterthancomplex.com/tutorial/2018/01/18/how-to-implement-multiple-user-types-with-django.html
-  - note that this article is from 2018 and dealing with a full stack Django application scenario with HTML/CSS templates. The principles of setting up the backend portion for User roles is still valid!
-- once user roles are set up on your backend, you can now utilize them on the frontend. Recommend reviewing the React Router slideshow for ideas on how to use descendant routes and conditional rendering to control who can access what parts of your application based on a role!
